@@ -38,7 +38,7 @@ export const getProjects = async (req, res) => {
 
 export const updateProject = async (req, res) => {
   const userId = req.user.id;
-  const projectId = req.params.id;
+  const projectId = req.params.projectId;
   const { title } = req.body;
 
   try {
@@ -61,7 +61,7 @@ export const updateProject = async (req, res) => {
 
 export const deleteProject = async (req, res) => {
   const userId = req.user.id;
-  const projectId = req.params.id;
+  const projectId = req.params.projectId;
 
   try {
     const projectToDelete = await project.findOneAndDelete({

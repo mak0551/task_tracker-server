@@ -11,7 +11,7 @@ const router = express.Router();
 // Project routes
 router.post("/post", auth, createProject); // POST /api/projects
 router.get("/get", auth, getProjects);
-router.put("/put", updateProject);
-router.delete("/delete", deleteProject);
+router.put("/put/:projectId",auth, updateProject);
+router.delete("/delete/:projectId",auth, deleteProject);
 
 export default router;

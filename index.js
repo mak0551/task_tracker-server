@@ -1,10 +1,10 @@
 import express from "express";
 import mongoose from "mongoose";
 import authRoutes from "./routes/authRoutes.js";
-import projectRoutes from "./routes/projectRoutes.js";
 import taskRoutes from "./routes/taskRoutes.js";
 import cors from "cors";
 import dotenv from "dotenv";
+import { auth } from "./middleware.js/authMiddleware.js";
 dotenv.config();
 
 const connectWithRetry = () => {
@@ -36,5 +36,5 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/auth", authRoutes);
-app.use("/api/projects", projectRoutes);
+app.use(auth);
 app.use("/api/tasks", taskRoutes);

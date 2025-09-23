@@ -7,9 +7,7 @@ router.post("/add", async (req, res) => {
   try {
     const { date } = req.body;
     const tasks = req.body;
-    const user = req.user;
-    console.log(user);
-    const Task = await task.findOne({ date });
+    let Task = await task.findOne({ date });
     if (Task) {
       Task.set(tasks);
       await Task.save();

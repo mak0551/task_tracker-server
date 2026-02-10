@@ -27,7 +27,7 @@ router.post("/add", async (req, res) => {
 router.get("/getbydate/:date", async (req, res) => {
   try {
     const { date } = req.params;
-    const Task = await task.findOne({ date });
+    const Task = await task.findOne({ date: date, userId: req.user.id });
     if (!Task) {
       return res
         .status(404)

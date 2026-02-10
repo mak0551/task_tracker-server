@@ -47,6 +47,10 @@ const taskSchema = new mongoose.Schema(
       done: { type: Boolean, default: false },
       comment: { type: String, default: "" },
     },
+    quran: {
+      done: { type: Boolean, default: false },
+      comment: { type: String, default: "" },
+    },
     other: {
       comment: { type: String, default: "" },
     },
@@ -54,5 +58,9 @@ const taskSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
+
+// Indexes to speed up common queries
+taskSchema.index({ userId: 1, date: -1 });
+taskSchema.index({ userId: 1, date: 1 }, { unique: true });
 
 export const task = mongoose.model("Task", taskSchema);

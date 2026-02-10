@@ -1,6 +1,7 @@
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { User } from "../models/user.js";
+import { task } from "../models/task.js";
 
 export const signup = async (req, res) => {
   try {
@@ -77,3 +78,32 @@ export const getbyid = async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 };
+
+// export const getallusers = async (req, res) => {
+//   try {
+//     const findusers = await User.find();
+//     if (findusers.length < 1) {
+//       return res.status(404).json({
+//         message: "no records found"
+//       })
+//     }
+//     res.status(200).json(findusers)
+//   } catch (err) {
+//     res.status(500).json({ message: 'internal server error' })
+//   }
+// }
+
+// export const getbyuser = async (req, res) => {
+//   try {
+//     const id = req.params.id
+//     const findusers = await task.find({ userId: id });
+//     if (findusers.length < 1) {
+//       return res.status(404).json({
+//         message: "no records found"
+//       })
+//     }
+//     res.status(200).json({ count: findusers.length, findusers })
+//   } catch (err) {
+//     res.status(500).json({ message: 'internal server error' })
+//   }
+// }

@@ -5,6 +5,8 @@ const router = express.Router();
 // Auth routes
 router.post("/signup", signup);
 router.post("/login", login);
-router.post("/getbyid/:id", getbyid);
+router.get("/getbyid/:id", getbyid);
+// router.get("/getall", getallusers);
+// router.get("/gettasksbyid/:id", getbyuser)
 
 export default router;

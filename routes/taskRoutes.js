@@ -6,8 +6,10 @@ const router = express.Router();
 router.post("/add", async (req, res) => {
   try {
     const { date } = req.body;
+    const userId = req.user.id;
     const tasks = req.body;
-    let Task = await task.findOne({ date });
+    
+    let Task = await task.findOne({ date, userId });
     if (Task) {
       Task.set(tasks);
       await Task.save();

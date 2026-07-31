@@ -48,13 +48,13 @@ export const login = async (req, res) => {
     }
 
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
-      expiresIn: "7d",
+      // expiresIn: "7d",
     });
     const cookieOptions = {
       httpOnly: true,
       sameSite: "lax",
       secure: process.env.NODE_ENV === "production",
-      maxAge: 7 * 24 * 60 * 60 * 1000,
+      maxAge: 30 * 24 * 60 * 60 * 1000,
     };
     res.cookie("accessToken", token, cookieOptions);
     const safeUser = user.toObject();
